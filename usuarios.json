@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "nombre": "juan rivera",
+        "email": "juan.rivera@axity.com",
+        "activo": true
+    },
+    {
+        "id": 2,
+        "nombre": "ana gomez",
+        "email": "ana.gomez@axity.com",
+        "activo": true
+    },
+    {
+        "id": 3,
+        "nombre": "carlos lopez",
+        "email": "carlos.polez@axity.com",
+        "activo": false
+    },
+    {
+        "id": "cuatro",
+        "nombre": "javier",
+        "email": "javier@axity.com",
+        "activo": true
+    }
+
+]
