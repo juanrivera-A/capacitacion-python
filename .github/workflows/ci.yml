@@ -1,0 +1,35 @@
+name: CI Quality Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar Poetry
+        run: pipx install poetry
+
+      - name: Instalar dependencias
+        run: poetry install --no-root
+
+      - name: Ejecutar Ruff Linter
+        run: poetry run ruff check .
+
+      - name: Ejecutar Ruff Formatter
+        run: poetry run ruff format --check .
+
+      - name: Ejecutar Mypy (Type Checking)
+        run: poetry run mypy src/
