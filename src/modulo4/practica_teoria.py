@@ -59,8 +59,8 @@ if __name__ == "__main__":
         ],
     }
 
-    # Validar entrada con Pydantic
-    dto_curso = CursoIn(**raw_payload)
+    # Validar entrada con Pydantic (método recomendado para diccionarios/JSON)
+    dto_curso = CursoIn.model_validate(raw_payload)
 
     # Mapear a Entidad de Dominio
     curso = Curso(
@@ -73,6 +73,10 @@ if __name__ == "__main__":
 
     top = curso.estudiante_top
     print(f"Curso creado: {curso.nombre_curso}")
-    print(
-        f"Estudiante destacado (usando __lt__): {top.nombre} ({top.calificacion_promedio})"
-    )
+
+    if top is not None:
+        print(
+            f"Estudiante destacado (usando __lt__): {top.nombre} ({top.calificacion_promedio})"
+        )
+    else:
+        print("El curso no tiene estudiantes registrados.")
