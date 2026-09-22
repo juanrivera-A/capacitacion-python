@@ -1,0 +1,6 @@
+id,producto,cantidad,precio_unitario,categoria
+1,Teclado Mecanico,5,1200.50,Perifericos
+2,Mouse Gamer,0,450.00,Perifericos
+3,Monitor 27,2,5500.00,Pantallas
+4,Laptop Stand,-1,350.00,Accesorios
+5,Cable HDMI,10,150.00,Accesorios

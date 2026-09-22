@@ -1,0 +1,4 @@
+app:
+  nombre: "AuditoriaModulo06"
+  version: "1.0.0"
+  entorno: "desarrollo"

@@ -1,0 +1,28 @@
+Y-09-21 16:17:16 [INFO] modulo_06: Iniciando ejecución del módulo 06...
+Y-09-21 16:17:16 [INFO] modulo_06: Versión de Git: git version 2.54.0.windows.1
+Y-09-21 16:17:16 [INFO] modulo_06: Registro generado (UTC): 2026-09-21T22:17:16.316368+00:00
+2026-09-21 16:23:47 [INFO] modulo_06: Iniciando ejecución del módulo 06...
+2026-09-21 16:23:47 [INFO] modulo_06: Versión de Git: git version 2.54.0.windows.1
+2026-09-21 16:23:47 [INFO] modulo_06: Registro generado (UTC): 2026-09-21T22:23:47.378858+00:00
+2026-09-21 16:23:47 [INFO] modulo_06: Registro generado (Local): <built-in method isoformat of datetime.datetime object at 0x000002125B956940>
+2026-09-21 16:23:47 [INFO] modulo_06: Guardando archivo JSON en: C:\Users\juan.rivera\Documents\Curso_Python\fundamental_level\data\auditoria.json
+2026-09-21 16:53:42 [INFO] modulo_06: Iniciando ejecución del módulo 06...
+2026-09-21 16:53:42 [INFO] modulo_06: Versión de Git: git version 2.54.0.windows.1
+2026-09-21 16:53:42 [INFO] modulo_06: Registro generado (Local): 2026-09-21T16:53:42.853506-06:00
+2026-09-21 16:53:42 [INFO] modulo_06: Guardando archivo JSON en: C:\Users\juan.rivera\Documents\Curso_Python\fundamental_level\data\auditoria.json
+2026-09-21 17:10:59 [INFO] modulo_06: Iniciando ejecución del módulo 06...
+2026-09-21 17:10:59 [INFO] modulo_06: Cargando archivo de configuración desde: C:\Users\juan.rivera\Documents\Curso_Python\fundamental_level\config\config.yaml
+2026-09-21 17:10:59 [INFO] modulo_06: Configuración cargada: {'nombre': 'AuditoriaModulo06', 'version': '1.0.0', 'entorno': 'desarrollo'}
+2026-09-21 17:10:59 [INFO] modulo_06: Versión de Git: git version 2.54.0.windows.1
+2026-09-21 17:10:59 [INFO] modulo_06: Registro generado (Local): 2026-09-21T17:10:59.573043-06:00
+2026-09-21 17:10:59 [INFO] modulo_06: Guardando archivo JSON en: C:\Users\juan.rivera\Documents\Curso_Python\fundamental_level\data\auditoria.json
+2026-09-21 20:54:42 [INFO] modulo_06: Iniciando ejecución del laboratorio 06...
+2026-09-21 20:54:42 [INFO] modulo_06: Leyendo archivo CSV desde C:\Users\juan.rivera\Documents\Curso_Python\fundamental_level\data\ventas.csv
+2026-09-21 20:56:54 [INFO] modulo_06: Iniciando ejecución del laboratorio 06...
+2026-09-21 20:56:54 [INFO] modulo_06: Leyendo archivo CSV desde C:\Users\juan.rivera\Documents\Curso_Python\fundamental_level\data\ventas.csv
+2026-09-21 20:56:54 [INFO] modulo_06: Se cargaron 5 registros desde el CSV.
+2026-09-21 20:56:54 [WARNING] modulo_06: Registro anómalo ignorado (cantidad <= 0) -> Producto: Mouse Gamer | Cantidad: 0
+2026-09-21 20:56:54 [WARNING] modulo_06: Registro anómalo ignorado (cantidad <= 0) -> Producto: Laptop Stand | Cantidad: -1
+2026-09-21 20:56:54 [INFO] modulo_06: Métricas calculadas con éxito: {'total_registros_csv': 5, 'registros_validos': 3, 'registros_anomalos': 2, 'monto_total_ventas': 18502.5, 'ticket_promedio': 6167.5}
+2026-09-21 20:56:54 [INFO] modulo_06: Guardando archivo JSON en: C:\Users\juan.rivera\Documents\Curso_Python\fundamental_level\data\metricas_ventas.json
+2026-09-21 20:56:54 [INFO] modulo_06: Exportación finalizada a C:\Users\juan.rivera\Documents\Curso_Python\fundamental_level\data\metricas_ventas.json
