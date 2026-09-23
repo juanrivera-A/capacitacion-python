@@ -34,5 +34,4 @@ dev = [
 mypy_path = "."
 explicit_package_bases = true
 
-[tool.ruff.lint]
-ignore = ["UP047"]
+
