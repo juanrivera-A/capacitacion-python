@@ -2,9 +2,12 @@ name: CI Quality Checks
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - "feature/**"      # Ejecuta en ramas de características (ej. feature/modulo-02-fastapi)
   pull_request:
-    branches: [ main ]
+    branches:
+      - main             # Ejecuta cuando abres PR hacia main
 
 jobs:
   quality-checks:
@@ -23,13 +26,21 @@ jobs:
         run: pipx install poetry
 
       - name: Instalar dependencias
+        working-directory: ./intermediate_level
         run: poetry install --no-root
 
       - name: Ejecutar Ruff Linter
+        working-directory: ./intermediate_level
         run: poetry run ruff check .
 
       - name: Ejecutar Ruff Formatter
+        working-directory: ./intermediate_level
         run: poetry run ruff format --check .
 
       - name: Ejecutar Mypy (Type Checking)
+        working-directory: ./intermediate_level
         run: poetry run mypy src/
+
+      - name: Ejecutar Pruebas (Pytest)
+        working-directory: ./intermediate_level
+        run: poetry run pytest tests/ --cov=src/modulo01
