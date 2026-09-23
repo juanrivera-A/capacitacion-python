@@ -1,0 +1,10 @@
+services:
+  smocker:
+    image: thiht/smocker:latest
+    container_name: smocker_mock_server
+    ports:
+      - "8080:8080" # Puerto para peticiones HTTP de la app
+      - "8081:8081" # Puerto de la Admin API / Web UI
+    environment:
+      - SMOCKER_MOCK_SERVER_PORT=8080
+      - SMOCKER_CONFIG_SERVER_PORT=8081
