@@ -13,9 +13,15 @@ class UserRepository:
     def __init__(self, db: Session) -> None:
         self.db = db
 
-    def create_user(self, username: str, email: str) -> User:
+    def create_user(
+        self, username: str, email: str, hashed_password: str = "default_hash"
+    ) -> User:
         """Crea y persiste un nuevo usuario."""
-        user = User(username=username, email=email)
+        user = User(
+            username=username,
+            email=email,
+            hashed_password=hashed_password,
+        )
         self.db.add(user)
         self.db.commit()
         self.db.refresh(user)
