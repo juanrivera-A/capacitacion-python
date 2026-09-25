@@ -1,5 +1,6 @@
 # tests/test_modulo05.py
 import pytest
+
 from src.modulo05.repositories import InMemoryUserRepository, SQLiteUserRepository
 from src.modulo05.service import UserService, UserServiceFactory
 
