@@ -6,7 +6,9 @@ P = ParamSpec("P")
 R = TypeVar("R")
 
 
-def memoize_cache(func: Callable[P, R]) -> Callable[P, R]:
+def memoize_cache(
+    func: Callable[P, R],
+) -> Callable[P, R]:
     """Decorador estructural para almacenar en caché resultados de llamadas a funciones."""
     cache: dict[tuple[Any, ...], R] = {}
 
