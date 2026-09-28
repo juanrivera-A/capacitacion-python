@@ -6,7 +6,7 @@ P = ParamSpec("P")
 R = TypeVar("R")
 
 
-def memoize_cache(
+def memoize_cache(  # noqa: UP047
     func: Callable[P, R],
 ) -> Callable[P, R]:
     """Decorador estructural para almacenar en caché resultados de llamadas a funciones."""
