@@ -18,7 +18,12 @@ dependencies = [
     "pydantic-settings (>=2.15.0,<3.0.0)",
     "email-validator (>=2.3.0,<3.0.0)",
     "python-jose[cryptography] (>=3.5.0,<4.0.0)",
-    "passlib[bcrypt] (>=1.7.4,<2.0.0)"
+    "passlib[bcrypt] (>=1.7.4,<2.0.0)",
+    "numpy (>=2.5.3,<3.0.0)",
+    "pandas (>=3.0.6,<4.0.0)",
+    "polars (>=1.44.2,<2.0.0)",
+    "scikit-learn (>=1.9.1,<2.0.0)",
+    "joblib (>=1.6.0,<2.0.0)"
 ]
 
 [tool.poetry]
@@ -46,6 +51,21 @@ mypy_path = "."
 explicit_package_bases = true
 
 [tool.ruff.lint]
-ignore = ["UP047"]
+ignore = []
+
+[[tool.mypy.overrides]]
+module = [
+    "joblib.*",
+    "sklearn.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+    "joblib.*",
+    "sklearn.*",
+    "pandas.*",
+]
+ignore_missing_imports = true
 
 
