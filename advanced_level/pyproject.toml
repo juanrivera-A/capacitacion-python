@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "advanced_level"
 version = "0.1.0"
-description = "Curso de Python - Nivel Avanzado: Arquitectura Limpia, UoW y Domain Events"
-authors = ["Juan Rivera Aguirre"]
-readme = "README.md"
-packages = [{include = "advanced_level", from = "src"}]
+description = "Módulo de CLI y Automatización"
+authors = ["Juan Rivera <juan.rivera@example.com>"]
+packages = [
+    { include = "src" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -12,6 +13,9 @@ fastapi = "^0.115.0"
 uvicorn = "^0.30.0"
 sqlalchemy = "^2.0.0"
 pydantic = "^2.8.0"
+typer = {extras = ["all"], version = "^0.27.2"}
+pydantic-settings = "^2.15.0"
+rich = "^15.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
@@ -36,3 +40,6 @@ mypy_path = "."
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.poetry.scripts]
+order-cli = "src.cli.main:app"
