@@ -93,8 +93,8 @@ jobs:
       - name: Construir y publicar imagen de Docker
         uses: docker/build-push-action@v6
         with:
-          context: ./advanced_level
-          file: Dockerfile
+          context: .
+          file: ./advanced_level/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
