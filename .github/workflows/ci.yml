@@ -30,34 +30,34 @@ jobs:
         run: pipx install poetry
 
       - name: Instalar dependencias
-        working-directory: ./intermediate_level
+        working-directory: ./advanced_level
         run: poetry install --no-root
 
       - name: Ejecutar Ruff Linter
-        working-directory: ./intermediate_level
+        working-directory: ./advanced_level
         run: poetry run ruff check .
 
       - name: Ejecutar Ruff Formatter
-        working-directory: ./intermediate_level
+        working-directory: ./advanced_level
         run: poetry run ruff format --check .
 
       - name: Ejecutar Mypy (Type Checking)
-        working-directory: ./intermediate_level
+        working-directory: ./advanced_level
         run: poetry run mypy src/
 
       - name: Ejecutar Pruebas (Pytest)
-        working-directory: ./intermediate_level
+        working-directory: ./advanced_level
         run: poetry run pytest tests/ --cov=src/modulo01
 
       - name: Generar paquete distribuble (Wheel)
-        working-directory: ./intermediate_level
+        working-directory: ./advanced_level
         run: poetry build
 
       - name: Subir artefacto Wheel
         uses: actions/upload-artifact@v4
         with:
           name: python-wheel-package
-          path: ./intermediate_level/dist/*.whl
+          path: ./advanced_level/dist/*.whl
 
   build-and-push-docker:
     needs: quality-and-test
@@ -93,8 +93,8 @@ jobs:
       - name: Construir y publicar imagen de Docker
         uses: docker/build-push-action@v6
         with:
-          context: ./intermediate_level
-          file: ./intermediate_level/Dockerfile
+          context: ./advanced_level
+          file: Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
