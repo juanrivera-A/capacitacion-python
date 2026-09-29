@@ -1,16 +1,20 @@
-name: CI Quality Checks
+name: CI/CD Pipeline - Order Service
 
 on:
   push:
     branches:
       - main
-      - "feature/**"      # Ejecuta en ramas de características (ej. feature/modulo-02-fastapi)
+      - "feature/**"
   pull_request:
     branches:
-      - main             # Ejecuta cuando abres PR hacia main
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  quality-checks:
+  quality-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -44,3 +48,53 @@ jobs:
       - name: Ejecutar Pruebas (Pytest)
         working-directory: ./intermediate_level
         run: poetry run pytest tests/ --cov=src/modulo01
+
+      - name: Generar paquete distribuble (Wheel)
+        working-directory: ./intermediate_level
+        run: poetry build
+
+      - name: Subir artefacto Wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-wheel-package
+          path: ./intermediate_level/dist/*.whl
+
+  build-and-push-docker:
+    needs: quality-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extraer metadatos para Docker (tags y labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,format=long
+            type=ref,event=branch
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+
+      - name: Construir y publicar imagen de Docker
+        uses: docker/build-push-action@v6
+        with:
+          context: ./intermediate_level
+          file: ./intermediate_level/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

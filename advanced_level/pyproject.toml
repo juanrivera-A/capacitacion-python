@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "advanced_level"
+version = "0.1.0"
+description = "Curso de Python - Nivel Avanzado: Arquitectura Limpia, UoW y Domain Events"
+authors = ["Juan Rivera Aguirre"]
+readme = "README.md"
+packages = [{include = "advanced_level", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = "^0.115.0"
+uvicorn = "^0.30.0"
+sqlalchemy = "^2.0.0"
+pydantic = "^2.8.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-cov = "^5.0.0"
+mypy = "^1.11.0"
+ruff = "^0.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+explicit_package_bases = true
+mypy_path = "."
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
